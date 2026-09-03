@@ -1,0 +1,28 @@
+---
+import { METRICS } from "../consts";
+---
+
+<div class="metrics">
+  <div class="wrap">
+    <div class="metrics-grid">
+      {METRICS.map((metric) => (
+        <div>
+          <div class="metric-value">{metric.value}</div>
+          <div class="metric-label">{metric.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .metrics {
+    border-top: 1px solid var(--panel-border); border-bottom: 1px solid var(--panel-border);
+    background: linear-gradient(180deg, rgba(76,217,192,0.04), transparent);
+  }
+  .metrics .wrap { padding: 44px 28px; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  @media (min-width: 720px) { .metrics-grid { grid-template-columns: repeat(4, 1fr); } }
+  .metric-value { font-family: var(--font-mono); font-size: clamp(1.6rem, 3vw, 2.1rem); color: var(--teal); font-weight: 600; }
+  .metric-label { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+</style>

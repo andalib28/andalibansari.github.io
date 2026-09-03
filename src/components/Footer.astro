@@ -1,0 +1,28 @@
+---
+import { SOCIALS, CV_PATH, UDEMY } from "../consts";
+---
+
+<footer>
+  <p>© 2026 Andalib Ansari · Data Platform &amp; AI Engineering</p>
+  <p class="footer-links">
+    <a href={CV_PATH} target="_blank" rel="noopener">Resume</a>
+    <span>·</span>
+    <a href={UDEMY.course.url} target="_blank" rel="noopener">Udemy Course</a>
+    <span>·</span>
+    <a href={SOCIALS.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+  </p>
+  <p class="disclaimer">
+    Services offered independently of my current employer. Case studies describe outcomes
+    from past engagements; identifying details are withheld where proprietary.
+  </p>
+</footer>
+
+<style>
+  footer { border-top: 1px solid var(--panel-border); padding: 30px 0; text-align: center; }
+  footer p { font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+  .footer-links { display: flex; justify-content: center; gap: 10px; }
+  .footer-links a { color: var(--teal); }
+  .footer-links a:hover { text-decoration: underline; }
+  .footer-links span { color: var(--panel-border); }
+  .disclaimer { font-size: 11.5px; color: #5A6478; max-width: 60ch; margin: 0 auto; }
+</style>

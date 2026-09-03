@@ -1,0 +1,40 @@
+---
+import ExpertiseCard from "./ExpertiseCard.astro";
+import { EXPERTISE } from "../consts";
+---
+
+<section id="expertise">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">// core expertise</div>
+      <h2 class="sec-title">What I build, end to end</h2>
+      <p class="sec-sub">Not a generalist list — this is the specific stack I've shipped in production, repeatedly.</p>
+    </div>
+    <div class="expertise-grid">
+      {EXPERTISE.map((item) => (
+        <ExpertiseCard
+          icon={item.icon}
+          color={item.color as "teal" | "amber" | "violet"}
+          title={item.title}
+          description={item.description}
+          tags={item.tags}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .expertise-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 700px) { .expertise-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1020px) { .expertise-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  /* If the final card lands alone in its row, center it as a full-width
+     row instead of leaving a lopsided gap next to it. */
+  @media (min-width: 700px) and (max-width: 1019px) {
+    .expertise-grid > :nth-child(2n+1):last-child { grid-column: 1 / -1; max-width: 420px; margin: 0 auto; }
+  }
+  @media (min-width: 1020px) {
+    .expertise-grid > :nth-child(3n+1):last-child { grid-column: 1 / -1; max-width: 420px; margin: 0 auto; }
+  }
+</style>

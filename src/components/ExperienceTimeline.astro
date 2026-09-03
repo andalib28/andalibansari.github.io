@@ -1,0 +1,37 @@
+---
+import { EXPERIENCE } from "../consts";
+---
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">// background</div>
+      <h2 class="sec-title">Experience</h2>
+    </div>
+    <div class="timeline">
+      {EXPERIENCE.map((job) => (
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">{job.date}</div>
+          <div class="tl-role">{job.role}</div>
+          <div class="tl-org">{job.org}</div>
+          <div class="tl-desc">{job.description}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline { border-left: 1px solid var(--panel-border); padding-left: 28px; }
+  .tl-item { position: relative; padding-bottom: 34px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-dot {
+    position: absolute; left: -33px; top: 4px; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--teal);
+  }
+  .tl-date { font-family: var(--font-mono); font-size: 12px; color: var(--amber); margin-bottom: 5px; }
+  .tl-role { font-family: var(--font-display); font-size: 15.5px; font-weight: 600; margin-bottom: 2px; }
+  .tl-org { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; }
+  .tl-desc { font-size: 13.5px; color: var(--text-dim); max-width: 65ch; }
+</style>

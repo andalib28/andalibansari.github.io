@@ -1,0 +1,35 @@
+---
+import { NAV_LINKS, SOCIALS, CV_PATH } from "../consts";
+---
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">andalib<span>@</span>ansari</div>
+      <div class="navlinks">
+        {NAV_LINKS.map((link) => <a href={link.href}>{link.label}</a>)}
+        <a href={CV_PATH} target="_blank" rel="noopener">resume ↓</a>
+      </div>
+      <a href={SOCIALS.calendly} target="_blank" rel="noopener" class="nav-cta">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,15,28,0.85); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--panel-border);
+  }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+  .brand { font-family: var(--font-mono); font-size: 14px; color: var(--teal); }
+  .brand span { color: var(--text-dim); }
+  .navlinks { display: none; gap: 26px; font-size: 13px; font-family: var(--font-mono); }
+  .navlinks a { color: var(--text-dim); transition: color .15s ease; }
+  .navlinks a:hover { color: var(--text); }
+  @media (min-width: 780px) { .navlinks { display: flex; } }
+  .nav-cta {
+    font-family: var(--font-mono); font-size: 13px; background: var(--teal); color: #06251F;
+    padding: 9px 16px; border-radius: 7px; font-weight: 600;
+  }
+</style>

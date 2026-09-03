@@ -1,0 +1,113 @@
+---
+import { SOCIALS, CONTACT_OPTIONS } from '../consts';
+// TODO: replace YOUR_FORM_ID with your real Formspree endpoint (see setup guide)
+const FORM_ENDPOINT = 'https://formspree.io/f/mqpkkgdq';
+---
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">// let's talk</div>
+      <h2 class="sec-title">Start a conversation</h2>
+    </div>
+    <div class="contact-panel">
+      <div class="contact-info">
+        <p style="color:var(--text-dim); max-width:38ch;">
+          Tell me a bit about what you're working on and I'll follow up within a
+          couple of days.
+        </p>
+        <a href={`mailto:${SOCIALS.email}`} class="email">{SOCIALS.email}</a>
+      </div>
+      <form action={FORM_ENDPOINT} method="POST">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div>
+          <label for="service">What do you need?</label>
+          <select id="service" name="service">
+            {CONTACT_OPTIONS.map((option) => <option>{option}</option>)}
+          </select>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="send-btn">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-panel {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    padding: 38px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  @media (min-width: 800px) {
+    .contact-panel {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .contact-info .email {
+    font-family: var(--font-mono);
+    color: var(--teal);
+    font-size: 15px;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    display: block;
+  }
+  input,
+  textarea,
+  select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 11px 12px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 14px;
+  }
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--teal);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  .send-btn {
+    align-self: flex-start;
+    background: var(--amber);
+    color: #2a1b02;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 11px 22px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+</style>
