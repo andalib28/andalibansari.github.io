@@ -39,7 +39,7 @@ export const UDEMY = {
   course: {
     title: "Data Engineering Bootcamp: SQL, ETL, PySpark & AWS (Hands-on)",
     tagline: "Build ETL pipelines with real-world projects, step by step.",
-    url: "https://www.udemy.com/course/data-engineering-bootcamp-series-1/", // TODO: replace with the real course URL
+    url: "https://www.udemy.com/course/data-engineering-bootcamp-series-1/?couponCode=DEAI2026", // TODO: replace with the real course URL
     rating: "4.6",
     ratingsCount: "23 ratings",
     hours: "10 total hours",
@@ -227,7 +227,7 @@ export const CONTACT_OPTIONS = [
   "Airflow Platform Setup",
   "Custom Data Quality Server",
   "Data Warehouse Modeling",
-  "AI Apps (n8n + LangChain)",
+  "AI Engineering",
   "Digital Presence Audit",
   "Something else",
 ];
