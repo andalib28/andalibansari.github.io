@@ -19,7 +19,7 @@ export const NAV_LINKS = [
 export const SOCIALS = {
   linkedin: "https://www.linkedin.com/in/andalibansari/",
   github: "https://github.com/", // TODO: replace with your real GitHub URL
-  email: "contact@andalibansari.com",
+  email: "hello@andalibansari.com",
   // TODO: replace with your real Calendly/Cal.com booking link
   calendly: "https://calendly.com/YOUR-USERNAME",
 };
