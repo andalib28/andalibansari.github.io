@@ -2,7 +2,7 @@
 // hunting through components for copy changes.
 
 export const SITE = {
-  title: "Andalib Ansari — Data Platform & AI Engineering",
+  title: "Andalib Ansari - Data Platform & AI Engineering",
   description:
     "Data platform design, Airflow, custom data quality servers, warehouse modeling, and AI apps with n8n and LangChain.",
 };
@@ -19,7 +19,7 @@ export const NAV_LINKS = [
 export const SOCIALS = {
   linkedin: "https://www.linkedin.com/in/andalibansari/",
   github: "https://github.com/", // TODO: replace with your real GitHub URL
-  email: "andalib.info@gmail.com",
+  email: "contact@andalibansari.com",
   // TODO: replace with your real Calendly/Cal.com booking link
   calendly: "https://calendly.com/YOUR-USERNAME",
 };
@@ -39,7 +39,7 @@ export const UDEMY = {
   course: {
     title: "Data Engineering Bootcamp: SQL, ETL, PySpark & AWS (Hands-on)",
     tagline: "Build ETL pipelines with real-world projects, step by step.",
-    url: "https://www.udemy.com/course/YOUR-COURSE-SLUG/", // TODO: replace with the real course URL
+    url: "https://www.udemy.com/course/data-engineering-bootcamp-series-1/", // TODO: replace with the real course URL
     rating: "4.6",
     ratingsCount: "23 ratings",
     hours: "10 total hours",
@@ -51,8 +51,8 @@ export const UDEMY = {
 export const METRICS = [
   { value: "12+", label: "years in data & AI engineering" },
   { value: "60%", label: "infrastructure cost reduction delivered" },
-  { value: "800+", label: "automated data-quality checks / day" },
-  { value: "35%", label: "query cost savings delivered" },
+  { value: "1500+", label: "automated data-quality checks / day" },
+  { value: "45%", label: "query cost savings delivered" },
 ];
 
 
@@ -79,7 +79,7 @@ export const EXPERTISE = [
     title: "Custom Data Quality Server",
     description:
       "Building in-house data quality services from scratch — automated checks that catch schema drift, null violations, and SLA breaches before they hit downstream consumers.",
-    tags: ["Flask API", "800+ checks/day", "SLA/SLO", "Observability"],
+    tags: ["Flask API", "1500+ checks/day", "SLA/SLO", "Observability"],
   },
   {
     icon: "schema",
