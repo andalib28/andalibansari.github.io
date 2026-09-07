@@ -62,7 +62,7 @@ export const EXPERTISE = [
     color: "teal",
     title: "End-to-End Data Platform Design",
     description:
-      "Architecting the full path from raw ingestion to governed, trusted data — data lake, warehouse, catalog, and lineage as one coherent platform, not disconnected tools.",
+      "Architecting the full path from raw ingestion to governed, trusted data - data lake, warehouse, catalog, and lineage as one coherent platform, not disconnected tools.",
     tags: ["AWS S3", "Data Lake", "Data Catalog", "Data Lineage"],
   },
   {
@@ -70,7 +70,7 @@ export const EXPERTISE = [
     color: "amber",
     title: "Airflow Platform Setup",
     description:
-      "Standing up production-grade Airflow — custom operators and plugins, DAG authoring standards, code-review conventions, and on-call runbooks that scale as teams grow.",
+      "Standing up production-grade Airflow - custom operators and plugins, DAG authoring standards, code-review conventions, and on-call runbooks that scale as teams grow.",
     tags: ["Apache Airflow", "Custom Operators", "DAG Standards", "PagerDuty SOPs"],
   },
   {
@@ -79,7 +79,7 @@ export const EXPERTISE = [
     title: "Custom Data Quality Server",
     description:
       "Building in-house data quality services from scratch — automated checks that catch schema drift, null violations, and SLA breaches before they hit downstream consumers.",
-    tags: ["Flask API", "1500+ checks/day", "SLA/SLO", "Observability"],
+    tags: ["Flask API","React UI", "1500+ checks/day", "SLA/SLO", "Observability"],
   },
   {
     icon: "schema",
@@ -87,7 +87,7 @@ export const EXPERTISE = [
     title: "Data Warehouse Modeling",
     description:
       "Designing dimensional models and star schemas built for fast, trustworthy BI — the layer between raw pipelines and the dashboards people actually make decisions from.",
-    tags: ["Redshift", "Snowflake", "Dimensional Modeling", "SQL"],
+    tags: ["Redshift", "Snowflake", "Databricks", "BigQuery", "Data Modeling", "SQL"],
   },
   {
     icon: "agent",
@@ -95,7 +95,7 @@ export const EXPERTISE = [
     title: "AI Apps on Warehouse & Event Data",
     description:
       "Building agentic AI applications with n8n and LangChain directly on top of warehouse and event-stream data — RAG assistants, natural-language query agents, and automation workflows.",
-    tags: ["n8n", "LangChain", "RAG", "Event Data"],
+    tags: ["n8n", "LangChain", "RAG", "Event Data", "Data Warehouse"],
   },
   {
     icon: "migration",
