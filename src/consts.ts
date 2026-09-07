@@ -146,7 +146,7 @@ export const SERVICES = [
   {
     title: "Digital Presence Audit",
     description:
-      "A structured report on how your data/AI stack and technical presence hold up against current market standards, with a prioritised roadmap.",
+      "A monthly report that finds the fixable gaps in your Google listing, reviews, and social media - ranked by what they're costing you in lost patients, with a clear action list to close them.",
     cta: "Request an audit →",
   },
   {
@@ -168,13 +168,13 @@ export const SELECTED_WORK = [
     domain: "Global gaming platform",
     title: "In-house data quality server",
     description:
-      "Built a Flask-based data quality platform running 800+ automated checks a day across ingestion and transformation layers.",
+      "Built a Flask-based data quality platform running 1500+ automated checks a day across ingestion and transformation layers.",
   },
   {
     domain: "Global gaming platform",
-    title: "n8n + LangChain RAG assistant",
+    title: "Agentic BI assistant",
     description:
-      "Shipped a natural-language BI assistant over the warehouse using an agentic n8n workflow, LangChain, and a vector database.",
+      "Built a production RAG assistant that lets analysts ask the warehouse questions in plain English - orchestrated with n8n, reasoning handled by LangChain, semantic search backed by a vector database.",
   },
   {
     domain: "Ride-hailing super-app",
