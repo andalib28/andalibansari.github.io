@@ -1,7 +1,7 @@
 ---
 interface Props {
   icon: string;
-  color: "teal" | "amber" | "violet";
+  color: 'teal' | 'amber' | 'violet';
   title: string;
   description: string;
   tags: string[];
@@ -26,12 +26,20 @@ const ICONS: Record<string, string> = {
     '<rect x="2" y="9" width="7" height="10" rx="1.2"/><path d="M4.3 12.2h2.4M4.3 15.2h2.4"/><path d="M11 14h3.2"/><path d="M12.6 12l2 2-2 2"/><path d="M21.5 18.5H16a3 3 0 01-.6-5.94A4 4 0 0122.7 14a2.7 2.7 0 01-1.2 4.5z"/>',
   coaching:
     '<circle cx="7" cy="7.5" r="3"/><path d="M2 20c0-3.2 2.4-5.8 5-5.8s5 2.6 5 5.8"/><path d="M14.5 6.5H20a1 1 0 011 1v5a1 1 0 01-1 1h-1.2l-2.3 2.2v-2.2H14.5a1 1 0 01-1-1v-5a1 1 0 011-1z"/>',
+  audit:
+    '<circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20"/><path d="M10 7.2l1 2 2.2.3-1.6 1.5.4 2.2-2-1.1-2 1.1.4-2.2-1.6-1.5 2.2-.3z"/>',
 };
 ---
 
 <div class="expertise-card">
   <div class={`expertise-icon ei-${color}`}>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" set:html={ICONS[icon]} />
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.6"
+      set:html={ICONS[icon]}
+    />
   </div>
   <h3>{title}</h3>
   <p>{description}</p>
@@ -42,18 +50,58 @@ const ICONS: Record<string, string> = {
 
 <style>
   .expertise-card {
-    background: var(--panel); border: 1px solid var(--panel-border); border-radius: 14px; padding: 26px;
-    transition: border-color .15s ease, transform .15s ease;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 26px;
+    transition:
+      border-color 0.15s ease,
+      transform 0.15s ease;
   }
-  .expertise-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+  .expertise-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-2px);
+  }
   .expertise-icon {
-    width: 46px; height: 46px; border-radius: 11px;
-    display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+    width: 46px;
+    height: 46px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
   }
-  .expertise-icon svg { width: 24px; height: 24px; }
-  .ei-teal { background: rgba(76,217,192,0.1); } .ei-teal svg { color: var(--teal); }
-  .ei-amber { background: rgba(245,166,35,0.1); } .ei-amber svg { color: var(--amber); }
-  .ei-violet { background: rgba(156,140,240,0.1); } .ei-violet svg { color: var(--violet); }
-  .expertise-card h3 { font-family: var(--font-display); font-size: 16.5px; font-weight: 600; margin-bottom: 10px; }
-  .expertise-card p { font-size: 13.5px; color: var(--text-dim); margin-bottom: 16px; }
+  .expertise-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  .ei-teal {
+    background: rgba(76, 217, 192, 0.1);
+  }
+  .ei-teal svg {
+    color: var(--teal);
+  }
+  .ei-amber {
+    background: rgba(245, 166, 35, 0.1);
+  }
+  .ei-amber svg {
+    color: var(--amber);
+  }
+  .ei-violet {
+    background: rgba(156, 140, 240, 0.1);
+  }
+  .ei-violet svg {
+    color: var(--violet);
+  }
+  .expertise-card h3 {
+    font-family: var(--font-display);
+    font-size: 16.5px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .expertise-card p {
+    font-size: 13.5px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
 </style>

@@ -113,26 +113,34 @@ export const EXPERTISE = [
       "Mentoring engineers and small teams on data platform fundamentals and applied AI — architecture reviews, career guidance, and hands-on pairing, one-on-one or in groups.",
     tags: ["Mentoring", "Architecture Reviews", "Career Guidance", "Team Training"],
   },
+  {
+    icon: "audit",
+    color: "violet",
+    title: "Digital Presence Audit",
+    description:
+      "Turning raw review, social, and GBP data into a monthly scored report that tells health SMEs exactly what their digital presence is costing them - competitor-benchmarked, AI-written commentary, delivered as a 12-page PDF within 48 hours.",
+    tags: ["NLP Sentiment Analysis", "Competitor Benchmarking", "AI Commentary", "Google Reviews", "Social Analytics", "PDF Automation"],
+  },
 ];
 
 export const PROCESS = [
   {
     num: "01 / Discover",
-    title: "Audit & scope",
+    title: "Scope the work",
     description:
-      "Review your current data platform, pipelines, and any existing AI workflows. Come out with a scoped, prioritised plan.",
+      "A short call to understand your data platform, pipelines, or digital presence — and agree what a successful engagement looks like.",
   },
   {
-    num: "02 / Build",
-    title: "Design & implement",
+    num: "02 / Deliver",
+    title: "Build or report",
     description:
-      "Hands-on delivery — platform architecture, Airflow setup, data quality server, warehouse models, or the n8n/LangChain agent itself.",
+      "Hands-on delivery — platform architecture, Airflow setup, a data quality server, warehouse migration, an AI agent, or your first Digital Presence Audit report.",
   },
   {
     num: "03 / Handover",
-    title: "Document & support",
+    title: "Support & next steps",
     description:
-      "Runbooks, DAG standards, and a short support window so your team can own and extend what's built.",
+      "Documentation and runbooks for technical builds, or a walkthrough of your action plan for audit clients — plus a short support window either way.",
   },
 ];
 
@@ -140,7 +148,7 @@ export const SERVICES = [
   {
     title: "Data & AI Consulting",
     description:
-      "Architecture reviews and hands-on build support across any of the five core areas — scoped as a fixed project or ongoing advisory.",
+      "Architecture reviews and hands-on build support across any of my core areas of expertise — scoped as a fixed project or ongoing advisory.",
     cta: "Discuss a project →",
   },
   {
