@@ -152,16 +152,16 @@ export const SERVICES = [
     cta: "Discuss a project →",
   },
   {
-    title: "Digital Presence Audit",
-    description:
-      "A monthly report that finds the fixable gaps in your Google listing, reviews, and social media - ranked by what they're costing you in lost patients, with a clear action list to close them.",
-    cta: "Request an audit →",
-  },
-  {
     title: "Data Engineering Build",
     description:
       "End-to-end delivery: pipelines, Airflow platform, data quality server, or warehouse migration — scoped and shipped.",
     cta: "Scope a build →",
+  },
+    {
+    title: "Digital Presence Audit",
+    description:
+      "A monthly report that finds the fixable gaps in your Google listing, reviews, and social media - ranked by what they're costing you in lost patients, with a clear action list to close them.",
+    cta: "Request an audit →",
   },
 ];
 
