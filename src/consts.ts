@@ -5,6 +5,7 @@ export const SITE = {
   title: "Andalib Ansari - Data Platform & AI Engineering",
   description:
     "Data platform design, Airflow, custom data quality servers, warehouse modeling, and AI apps with n8n and LangChain.",
+  url: "https://andalibansari.com",
 };
 
 export const NAV_LINKS = [
@@ -118,7 +119,7 @@ export const EXPERTISE = [
     color: "violet",
     title: "Digital Presence Audit",
     description:
-      "Turning raw review, social, and GBP data into a monthly scored report that tells health SMEs exactly what their digital presence is costing them - competitor-benchmarked, AI-written commentary, delivered as a 12-page PDF within 48 hours.",
+      "Turning raw review, social, and GBP data into a monthly scored report that tells health SMEs exactly what their digital presence is costing them - competitor-benchmarked, AI-written commentary, delivered as a PDF report",
     tags: ["NLP Sentiment Analysis", "Competitor Benchmarking", "AI Commentary", "Google Reviews", "Social Analytics", "PDF Automation"],
   },
 ];

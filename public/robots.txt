@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://andalibansari.com/sitemap-index.xml
