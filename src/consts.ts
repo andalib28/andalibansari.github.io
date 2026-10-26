@@ -79,7 +79,7 @@ export const EXPERTISE = [
     color: "teal",
     title: "Custom Data Quality Server",
     description:
-      "Building in-house data quality services from scratch — automated checks that catch schema drift, null violations, and SLA breaches before they hit downstream consumers.",
+      "Building in-house data quality services from scratch - automated checks that catch schema drift, null violations, and SLA breaches before they hit downstream consumers.",
     tags: ["Flask API","React UI", "1500+ checks/day", "SLA/SLO", "Observability"],
   },
   {
@@ -95,7 +95,7 @@ export const EXPERTISE = [
     color: "violet",
     title: "AI Apps on Warehouse & Event Data",
     description:
-      "Building agentic AI applications with n8n and LangChain directly on top of warehouse and event-stream data — RAG assistants, natural-language query agents, and automation workflows.",
+      "Building agentic AI applications with n8n and LangChain directly on top of warehouse and event-stream data - RAG assistants, natural-language query agents, and automation workflows.",
     tags: ["n8n", "LangChain", "RAG", "Event Data", "Data Warehouse"],
   },
   {
@@ -103,7 +103,7 @@ export const EXPERTISE = [
     color: "amber",
     title: "Data Warehouse Migration",
     description:
-      "Moving traditional, on-prem data warehouses to modern cloud platforms — replatforming schemas, pipelines, and workloads with minimal downtime and validated parity.",
+      "Moving traditional, on-prem data warehouses to modern cloud platforms - replatforming schemas, pipelines, and workloads with minimal downtime and validated parity.",
     tags: ["Redshift", "Snowflake", "Databricks", "BigQuery"],
   },
   {
@@ -111,7 +111,7 @@ export const EXPERTISE = [
     color: "teal",
     title: "Data Analytics",
     description:
-      "Turning warehouse and event data into dashboards, metrics layers, and ad-hoc analysis that actually drive decisions — not just reports nobody opens.",
+      "Turning warehouse and event data into dashboards, metrics layers, and ad-hoc analysis that actually drive decisions - not just reports nobody opens.",
     tags: ["SQL", "Metrics Layer", "BI Dashboards", "Python"],
   },
   {
@@ -119,7 +119,7 @@ export const EXPERTISE = [
     color: "teal",
     title: "1:1 / Group Data & AI Engineering Coaching",
     description:
-      "Mentoring engineers and small teams on data platform fundamentals and applied AI — architecture reviews, career guidance, and hands-on pairing, one-on-one or in groups.",
+      "Mentoring engineers and small teams on data platform fundamentals and applied AI - architecture reviews, career guidance, and hands-on pairing, one-on-one or in groups.",
     tags: ["Mentoring", "Architecture Reviews", "Career Guidance", "Team Training"],
   },
   {
@@ -127,8 +127,8 @@ export const EXPERTISE = [
     color: "violet",
     title: "Digital Presence Audit",
     description:
-      "Turning raw review, social, and GBP data into a monthly scored report that tells health SMEs exactly what their digital presence is costing them - competitor-benchmarked, AI-written commentary, delivered as a PDF report",
-    tags: ["NLP Sentiment Analysis", "Competitor Benchmarking", "AI Commentary", "Google Reviews", "Social Analytics", "PDF Automation"],
+  "AI-analysed monthly audits that show local businesses how they look on Google, social and AI search, how they compare with competitors, and exactly what to fix first. Each report is tailored to the business.",
+    tags: ["AI Search Visibility", "Review Sentiment Analysis", "Competitor Benchmarking", "Website × GBP Checks", "Social Analytics", "AI-Written Insights", "Automated Reporting"],
   },
 ];
 
