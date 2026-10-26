@@ -198,7 +198,7 @@ export const SELECTED_WORK = [
 
 export const EXPERIENCE = [
   {
-    date: "JUL 2023 — PRESENT · PERTH",
+    date: "JUL 2023 — PRESENT · AUSTRALIA",
     role: "Senior Data Architect, Data & AI Engineering",
     org: "Microgaming Asia",
     description:
@@ -219,14 +219,14 @@ export const EXPERIENCE = [
       "Built the centralised Data Warehouse powering C-suite dashboards across ride-hailing, payments, food, and delivery.",
   },
   {
-    date: "JAN 2015 — JUL 2017 · MUMBAI",
+    date: "JAN 2015 — JUL 2017 · INDIA",
     role: "Data Engineer",
     org: "WebEngage",
     description:
       "Built the company's Data Warehouse from scratch on Redshift, maintaining 99.9% uptime across ETL, warehouse, and BI layers.",
   },
   {
-    date: "JAN 2014 — DEC 2014 · MUMBAI",
+    date: "JAN 2014 — DEC 2014 · INDIA",
     role: "Data Analyst",
     org: "Freestone Infotech",
     description:
