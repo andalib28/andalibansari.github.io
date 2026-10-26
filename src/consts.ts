@@ -151,18 +151,21 @@ export const SERVICES = [
     description:
       "Architecture reviews and hands-on build support across any of my core areas of expertise — scoped as a fixed project or ongoing advisory.",
     cta: "Discuss a project →",
+    link: "#contact",
   },
   {
     title: "Data Engineering Build",
     description:
       "End-to-end delivery: pipelines, Airflow platform, data quality server, or warehouse migration — scoped and shipped.",
     cta: "Scope a build →",
+    link: "#contact",
   },
     {
     title: "Digital Presence Audit",
     description:
       "A monthly report that finds the fixable gaps in your Google listing, reviews, and social media - ranked by what they're costing you in lost patients, with a clear action list to close them.",
     cta: "Request an audit →",
+    link: "/digital-presence-audit.html",
   },
 ];
 
