@@ -1,0 +1,1368 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset=utf8>
+  <meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <style>
+    :root {
+      color-scheme: light;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px)
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font: 14px -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #faf9f5;
+      color: #141413
+    }
+
+    img {
+      max-width: 100%
+    }
+
+    [hidden]:not([hidden=until-found i]) {
+      display: none !important
+    }
+  </style>
+</head>
+
+<body>
+  <title>Digital Presence Intelligence</title>
+  <style>
+    /*
+    This page commits to a single dark, terminal-inspired visual world by
+    design (the "tech-savvy, data-driven product" brief) rather than
+    switching with the viewer's OS theme — the same way most data/SaaS
+    product marketing pages hold one identity regardless of system setting.
+    Background and every color are still painted explicitly so the page
+    holds on any host ground.
+  */
+    :root {
+      --bg: #14120E;
+      --surface: #1C1913;
+      --surface-2: #252017;
+      --border: #332C20;
+      --ink: #F5F0E8;
+      --ink-soft: #B9B2A0;
+      --ink-faint: #847A66;
+      --gold: #D1A83F;
+      --teal: #2BB88A;
+      --blue: #4E8BC9;
+      --rust: #D6754F;
+      --gold-ink: #14120E;
+      --grid-line: rgba(245, 240, 232, 0.045);
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 20px 50px -20px rgba(0, 0, 0, .6);
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--gold-ink);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding-inline: 24px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      text-wrap: balance;
+      margin: 0;
+    }
+
+    p {
+      line-height: 1.65;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eyebrow .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex: 0 0 auto;
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(43, 184, 138, .5);
+      }
+
+      50% {
+        opacity: .55;
+        box-shadow: 0 0 0 4px rgba(43, 184, 138, 0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .eyebrow .dot {
+        animation: none;
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px 20px;
+      border-radius: 7px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--gold-ink);
+    }
+
+    .btn-primary[aria-disabled="true"] {
+      opacity: .4;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .btn-ghost {
+      border-color: var(--border);
+      color: var(--ink);
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--ink-faint);
+    }
+
+    /* nav */
+    header.nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bg) 86%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 14px;
+    }
+
+    .wordmark {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 700;
+      font-size: 14.5px;
+      letter-spacing: .04em;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+    }
+
+    .wordmark .sq {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, var(--teal), var(--gold));
+      flex: 0 0 auto;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 28px;
+      font-size: 13.5px;
+      color: var(--ink-soft);
+    }
+
+    .navlinks a {
+      text-decoration: none;
+    }
+
+    .navlinks a:hover {
+      color: var(--ink);
+    }
+
+    .navcta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    @media (max-width:760px) {
+      .navlinks {
+        display: none;
+      }
+    }
+
+    /* hero */
+    .hero {
+      padding-block: 74px 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 46px;
+      align-items: center;
+    }
+
+    @media (max-width:860px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 4.6vw, 50px);
+      font-weight: 600;
+      margin-block: 16px 18px;
+      letter-spacing: -.01em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--teal);
+    }
+
+    .hero p.lede {
+      font-size: 16.5px;
+      max-width: 46ch;
+      margin-bottom: 26px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .hero-note {
+      font-size: 12.5px;
+      color: var(--ink-faint);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* hero visual */
+    .hero-visual {
+      position: relative;
+    }
+
+    .vcard {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 22px 24px;
+    }
+
+    .vcard .vhead {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .vcard .vtitle {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .vcard .vtag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--surface-2);
+      color: var(--ink-faint);
+      border: 1px solid var(--border);
+    }
+
+    .gauge-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .score-num {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 52px;
+      line-height: 1;
+    }
+
+    .score-sub {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-faint);
+      margin-top: 4px;
+    }
+
+    .json-card {
+      margin-top: 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      overflow-x: auto;
+    }
+
+    .json-card .k {
+      color: var(--blue);
+    }
+
+    .json-card .s {
+      color: var(--teal);
+    }
+
+    .json-card .n {
+      color: var(--gold);
+    }
+
+    .json-card .punc {
+      color: var(--ink-faint);
+    }
+
+    /* industry tags */
+    .industry-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .itag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: var(--ink-soft);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 99px;
+      padding: 7px 14px;
+    }
+
+    /* sections */
+    section {
+      padding-block: 64px;
+    }
+
+    .sec-head {
+      max-width: 640px;
+      margin-bottom: 38px;
+    }
+
+    .sec-head h2 {
+      font-size: clamp(24px, 3vw, 32px);
+      margin-block: 10px 12px;
+    }
+
+    .sec-head p {
+      font-size: 15px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      border: none;
+    }
+
+    /* stat strip */
+    .statbar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .statbar .stat {
+      padding: 24px 20px 22px;
+      border-right: 1px solid var(--border);
+      border-top: 3px solid var(--stat-color);
+      position: relative;
+    }
+
+    .statbar .stat:last-child {
+      border-right: none;
+    }
+
+    .statbar .stat .v {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--stat-color);
+    }
+
+    .statbar .stat .l {
+      font-size: 11.5px;
+      color: var(--ink-faint);
+      margin-top: 6px;
+      letter-spacing: .02em;
+    }
+
+    .statbar .stat:nth-child(1) {
+      --stat-color: var(--gold);
+    }
+
+    .statbar .stat:nth-child(2) {
+      --stat-color: var(--teal);
+    }
+
+    .statbar .stat:nth-child(3) {
+      --stat-color: var(--blue);
+    }
+
+    .statbar .stat:nth-child(4) {
+      --stat-color: var(--rust);
+    }
+
+    @media (max-width:700px) {
+      .statbar {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .statbar .stat:nth-child(2) {
+        border-right: none;
+      }
+
+      .statbar .stat {
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    /* feature grid */
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width:900px) {
+      .feat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width:620px) {
+      .feat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feat-card .fi {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+    }
+
+    .feat-card .fi svg {
+      width: 19px;
+      height: 19px;
+      stroke: var(--fcolor, var(--teal));
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .feat-card h3 {
+      font-size: 16px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+    }
+
+    .feat-card p {
+      font-size: 13.3px;
+    }
+
+    .feat-card .tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--ink-faint);
+      letter-spacing: .06em;
+    }
+
+    .feat-card.wide {
+      grid-column: span 1;
+    }
+
+    /* also-included grid */
+    .new-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width:900px) {
+      .new-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width:620px) {
+      .new-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .new-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 18px 20px;
+      position: relative;
+    }
+
+    .new-card h4 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14.5px;
+      font-weight: 700;
+      margin: 8px 0 8px;
+      padding-right: 36px;
+    }
+
+    .new-card p {
+      font-size: 12.6px;
+    }
+
+    .pill-area {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--ink-faint);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 99px;
+      letter-spacing: .04em;
+    }
+
+    /* diagram */
+    .diagram-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 22px;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    figcaption {
+      font-size: 12.5px;
+      color: var(--ink-faint);
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    svg text {
+      fill: var(--ink-soft);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    svg .lbl-strong {
+      fill: var(--ink);
+      font-weight: 600;
+    }
+
+    svg .txt-gold {
+      fill: var(--gold);
+      font-weight: 700;
+    }
+
+    svg .txt-teal {
+      fill: var(--teal);
+      font-weight: 700;
+    }
+
+    /* sample score module */
+    .sample-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 20px;
+    }
+
+    @media (max-width:860px) {
+      .sample-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 34px;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .bar-row .lbl {
+      font-size: 12px;
+      color: var(--ink-soft);
+    }
+
+    .bar-row.weak .lbl {
+      color: var(--rust);
+      font-weight: 700;
+    }
+
+    .bar-track {
+      background: var(--surface-2);
+      border-radius: 5px;
+      height: 16px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 5px;
+      background: var(--gold);
+      opacity: .85;
+    }
+
+    .bar-fill.weak {
+      background: var(--rust);
+    }
+
+    .bar-row .val {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .bar-row.weak .val {
+      color: var(--rust);
+      font-weight: 700;
+    }
+
+    /* sample download */
+    .sample-download {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 26px;
+      margin-top: 22px;
+    }
+
+    .sd-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .sample-download p {
+      font-size: 13.3px;
+      margin-bottom: 16px;
+    }
+
+    .sd-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .sd-select {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 11px 14px;
+      min-width: 220px;
+      flex: 1 1 220px;
+    }
+
+    .sd-select option:disabled {
+      color: var(--ink-faint);
+    }
+
+    .sd-note {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      color: var(--ink-faint);
+      margin-top: 10px;
+    }
+
+    /* trust strip */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width:760px) {
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .trust-item {
+      padding: 20px 0;
+      border-top: 2px solid var(--teal);
+    }
+
+    .trust-item h3 {
+      font-size: 15px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .trust-item p {
+      font-size: 13px;
+    }
+
+    /* final cta */
+    .cta-band {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 46px 40px;
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      font-size: clamp(22px, 3vw, 30px);
+      margin-bottom: 14px;
+    }
+
+    .cta-band p {
+      max-width: 52ch;
+      margin: 0 auto 26px;
+      font-size: 15px;
+    }
+
+    footer.foot {
+      border-top: 1px solid var(--border);
+      padding-block: 30px;
+      margin-top: 20px;
+    }
+
+    .foot-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .foot-links {
+      display: flex;
+      gap: 20px;
+      font-size: 12.5px;
+      color: var(--ink-faint);
+    }
+
+    .foot-links a {
+      text-decoration: none;
+    }
+
+    .foot-fine {
+      font-size: 11.5px;
+      color: var(--ink-faint);
+      margin-top: 16px;
+      font-style: italic;
+    }
+  </style>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="/" class="wordmark"><span class="sq"></span>DPI <span style="color:var(--ink-faint); font-weight:400;">/
+          Digital
+          Presence Intelligence</span></a>
+      <nav class="navlinks">
+        <a href="#product">Product</a>
+        <a href="#inside">What's Inside</a>
+        <a href="#how">How It Works</a>
+        <a href="#sample">Sample Report</a>
+      </nav>
+      <div class="navcta"><a class="btn btn-primary" href="/#contact">Request free audit</a></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="product">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span>AUTOMATED PIPELINE &middot; RUNS MONTHLY</div>
+          <h1>Know your <em>reputation score</em> before a customer goes looking.</h1>
+          <p class="lede">DPI scores any local business from 0&ndash;100 by combining reviews, social activity, your
+            website, and nearby competitors into one number &mdash; dentists, cafés, restaurants, salons, clinics, all
+            run through the same engine.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="/#contact">Request your free audit</a>
+            <a class="btn btn-ghost" href="#sample">See a sample report &darr;</a>
+          </div>
+          <div class="hero-note">// one score, built from everything that shapes how customers see you · works for any
+            local business</div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="vcard">
+            <div class="vhead">
+              <span class="vtitle">Unified Reputation Score</span>
+              <span class="vtag">sample_output.json</span>
+            </div>
+            <div class="gauge-wrap">
+              <svg width="108" height="108" viewBox="0 0 108 108" role="img"
+                aria-label="Score gauge showing 53 out of 100">
+                <circle cx="54" cy="54" r="46" fill="none" stroke="var(--surface-2)" stroke-width="10" />
+                <circle cx="54" cy="54" r="46" fill="none" stroke="var(--rust)" stroke-width="10" stroke-linecap="round"
+                  stroke-dasharray="289" stroke-dashoffset="136" transform="rotate(-90 54 54)" />
+              </svg>
+              <div>
+                <div class="score-num">53</div>
+                <div class="score-sub">OUT OF 100 &middot; BELOW MEDIAN</div>
+              </div>
+            </div>
+            <div class="json-card">{<br>
+              &nbsp;&nbsp;<span class="k">"business"</span><span class="punc">:</span> <span
+                class="s">"sample_business_01"</span>,<br>
+              &nbsp;&nbsp;<span class="k">"category"</span><span class="punc">:</span> <span
+                class="s">"any_local_business"</span>,<br>
+              &nbsp;&nbsp;<span class="k">"unified_score"</span><span class="punc">:</span> <span
+                class="n">53</span>,<br>
+              &nbsp;&nbsp;<span class="k">"vs_industry_median"</span><span class="punc">:</span> <span
+                class="n">-7</span>,<br>
+              &nbsp;&nbsp;<span class="k">"ai_engines_checked"</span><span class="punc">:</span> <span
+                class="n">4</span>,<br>
+              &nbsp;&nbsp;<span class="k">"report_pages"</span><span class="punc">:</span> <span
+                class="n">19</span>,<br>
+              &nbsp;&nbsp;<span class="k">"refresh"</span><span class="punc">:</span> <span
+                class="s">"monthly"</span><br>
+              }</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <hr class="divider">
+    </div>
+
+    <section style="padding-block:34px;">
+      <div class="wrap">
+        <div class="eyebrow" style="justify-content:center; margin-bottom:16px;">ONE SYSTEM &middot; ANY LOCAL BUSINESS
+        </div>
+        <div class="industry-row">
+          <span class="itag">Dentists</span><span class="itag">Caf&eacute;s</span><span
+            class="itag">Restaurants</span><span class="itag">Hair &amp; Beauty Salons</span><span class="itag">Gyms
+            &amp; Studios</span><span class="itag">Allied Health Clinics</span><span class="itag">Retail</span><span
+            class="itag">Auto Services</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <hr class="divider">
+    </div>
+
+    <section>
+      <div class="wrap">
+        <div class="statbar">
+          <div class="stat">
+            <div class="v">0&ndash;100</div>
+            <div class="l">Unified score, one number for the whole business</div>
+          </div>
+          <div class="stat">
+            <div class="v">19</div>
+            <div class="l">Pages in every monthly report</div>
+          </div>
+          <div class="stat">
+            <div class="v">12</div>
+            <div class="l">Areas of your presence analysed</div>
+          </div>
+          <div class="stat">
+            <div class="v">4</div>
+            <div class="l">AI engines checked for search visibility</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inside">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">WHAT'S INSIDE &middot; 19 PAGES &middot; 12 AREAS</div>
+          <h2>Twelve areas, one monthly report</h2>
+          <p>Every report breaks your digital presence into the parts that actually move new-customer enquiries &mdash;
+            not a wall of screenshots. Built the same way whether you run a clinic, a caf&eacute;, or a salon.</p>
+        </div>
+        <div class="feat-grid">
+          <div class="feat-card" style="--fcolor:var(--teal)">
+            <div class="fi"><svg viewBox="0 0 24 24">
+                <path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z" />
+                <path d="m20 20-4.3-4.3" />
+                <path d="M9 11.5 10.5 13 14 9.5" />
+              </svg></div>
+            <span class="tag">AREA 01</span>
+            <h3>Reviews Health</h3>
+            <p>Star rating, response rate, and unanswered negatives &mdash; plus what customers actually praise or
+              criticise, pulled straight from your review text.</p>
+          </div>
+          <div class="feat-card" style="--fcolor:var(--gold)">
+            <div class="fi"><svg viewBox="0 0 24 24">
+                <path d="M4 5h11v7H8l-4 4V5Z" />
+                <path d="M20 10h-3" />
+                <circle cx="20" cy="14" r="0.4" />
+              </svg></div>
+            <span class="tag">AREA 05</span>
+            <h3>Social Media Scorecard</h3>
+            <p>Followers, growth, posting cadence, and engagement by content type &mdash; including your single best-
+              and worst-performing post.</p>
+          </div>
+          <div class="feat-card" style="--fcolor:var(--blue)">
+            <div class="fi"><svg viewBox="0 0 24 24">
+                <path d="M4 20V10" />
+                <path d="M11 20V4" />
+                <path d="M18 20v-7" />
+                <path d="M4 20h16" />
+              </svg></div>
+            <span class="tag">AREA 07</span>
+            <h3>Competitor Benchmark</h3>
+            <p>Side-by-side comparison against the businesses actually competing with you nearby, plus a content gap map
+              of what they post that you don't.</p>
+          </div>
+          <div class="feat-card" style="--fcolor:var(--rust)">
+            <div class="fi"><svg viewBox="0 0 24 24">
+                <path d="M9 15 15 9" />
+                <path d="M10.5 6.5 12 5a3.5 3.5 0 0 1 5 5l-1.5 1.5" />
+                <path d="M13.5 17.5 12 19a3.5 3.5 0 0 1-5-5l1.5-1.5" />
+              </svg></div>
+            <span class="tag">AREA 09</span>
+            <h3>Website &harr; Listing Cross-Analysis</h3>
+            <p>Every mismatch between your website and your Google Business Profile &mdash; hours, services, booking
+              links, photos, contact details.</p>
+          </div>
+          <div class="feat-card" style="--fcolor:var(--gold)">
+            <div class="fi"><svg viewBox="0 0 24 24">
+                <path d="M12 3v3" />
+                <path d="M12 18v3" />
+                <path d="M3 12h3" />
+                <path d="M18 12h3" />
+                <circle cx="12" cy="12" r="5" />
+              </svg></div>
+            <span class="tag">AREA 10</span>
+            <h3>Unified Reputation Score</h3>
+            <p>One 0&ndash;100 number, built from five weighted signals so it can't be inflated by one strong metric
+              &mdash; see exactly how it's built below.</p>
+          </div>
+          <div class="feat-card" style="--fcolor:var(--teal)">
+            <div class="fi"><svg viewBox="0 0 24 24">
+                <path d="M5 6h14" />
+                <path d="m5 6 2 2 3-3" />
+                <path d="M5 13h14" />
+                <path d="m5 13 2 2 3-3" />
+                <path d="M11 20h8" />
+              </svg></div>
+            <span class="tag">AREA 11</span>
+            <h3>Priority Action Plan</h3>
+            <p>Ranked by revenue impact, not ease &mdash; plus ready-to-use response templates and a four-week content
+              calendar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">ALSO IN EVERY REPORT</div>
+          <h2>The signals most audits don't touch</h2>
+          <p>Six more areas, folded into the same 19-page monthly report at no extra step for you.</p>
+        </div>
+        <div class="new-grid">
+          <div class="new-card">
+            <span class="pill-area">AREA 02</span>
+            <h4>Aspect-Based Sentiment</h4>
+            <p>8 dimensions of the customer experience &mdash; wait time, pricing transparency, cleanliness and more
+              &mdash; scored independently against the local median.</p>
+          </div>
+          <div class="new-card">
+            <span class="pill-area">AREA 03</span>
+            <h4>Review Velocity &amp; Momentum</h4>
+            <p>Is your reputation accelerating or declining? See the trend months before it shows up in your star
+              rating.</p>
+          </div>
+          <div class="new-card">
+            <span class="pill-area">AREA 04</span>
+            <h4>Staff Sentiment Signals</h4>
+            <p>Individual team members, as customers actually describe them in review text &mdash; your star performers
+              and your risk flags.</p>
+          </div>
+          <div class="new-card">
+            <span class="pill-area">AREA 06</span>
+            <h4>Social Content Gap Analysis</h4>
+            <p>The topics competitors post about that you don't &mdash; ranked by engagement opportunity, with post
+              ideas attached.</p>
+          </div>
+          <div class="new-card">
+            <span class="pill-area">AREA 08</span>
+            <h4>AI Search Visibility</h4>
+            <p>Does ChatGPT, Gemini, Claude or Google AI recommend you when someone asks for a business like yours
+              nearby &mdash; and get your hours and facts right while doing it?</p>
+          </div>
+          <div class="new-card">
+            <span class="pill-area">AREA 12</span>
+            <h4>Impact &amp; Effort Map</h4>
+            <p>Every finding plotted by how much it moves enquiries against how long it takes to fix &mdash; so you
+              start in the quick-wins corner.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">HOW IT WORKS</div>
+          <h2>Five weighted signals in, one comparable score out</h2>
+          <p>Each signal is measured independently, then weighted into a single composite out of 100 &mdash; so a
+            business with a great star rating but a dead social account, or a broken booking link, doesn't get an
+            inflated score.</p>
+        </div>
+        <div class="diagram-card">
+          <figure>
+            <svg viewBox="0 0 920 290" role="img"
+              aria-label="Diagram: Google star rating weighted 30 points, review response rate 20 points, social engagement vs median 25 points, posting consistency 15 points, and competitive position 10 points, feed a weighted scoring model that outputs the Unified Reputation Score from 0 to 100."
+              style="width:100%; height:auto;">
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7"
+                  orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 Z" fill="currentColor" />
+                </marker>
+              </defs>
+              <!-- input boxes: label left, weight right -->
+              <g font-size="12">
+                <rect x="20" y="8" width="220" height="42" rx="8" fill="none" stroke="currentColor" opacity="0.5" />
+                <text x="34" y="34" class="lbl-strong">Google star rating</text>
+                <text x="226" y="34" text-anchor="end" class="txt-gold">/30</text>
+
+                <rect x="20" y="62" width="220" height="42" rx="8" fill="none" stroke="currentColor" opacity="0.5" />
+                <text x="34" y="88" class="lbl-strong">Review response rate</text>
+                <text x="226" y="88" text-anchor="end" class="txt-gold">/20</text>
+
+                <rect x="20" y="116" width="220" height="42" rx="8" fill="none" stroke="currentColor" opacity="0.5" />
+                <text x="34" y="142" class="lbl-strong">Social engagement</text>
+                <text x="226" y="142" text-anchor="end" class="txt-gold">/25</text>
+
+                <rect x="20" y="170" width="220" height="42" rx="8" fill="none" stroke="currentColor" opacity="0.5" />
+                <text x="34" y="196" class="lbl-strong">Posting consistency</text>
+                <text x="226" y="196" text-anchor="end" class="txt-gold">/15</text>
+
+                <rect x="20" y="224" width="220" height="42" rx="8" fill="none" stroke="currentColor" opacity="0.5" />
+                <text x="34" y="250" class="lbl-strong">Competitive position</text>
+                <text x="226" y="250" text-anchor="end" class="txt-gold">/10</text>
+              </g>
+
+              <!-- arrows into model -->
+              <g stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="none">
+                <path d="M240,29 C 330,29 340,137 440,137" marker-end="url(#arrow)" />
+                <path d="M240,83 C 320,83 340,135 440,137" marker-end="url(#arrow)" />
+                <path d="M240,137 C 340,137 340,137 440,137" marker-end="url(#arrow)" />
+                <path d="M240,191 C 320,191 340,139 440,137" marker-end="url(#arrow)" />
+                <path d="M240,245 C 330,245 340,139 440,137" marker-end="url(#arrow)" />
+              </g>
+
+              <!-- model box -->
+              <rect x="440" y="87" width="200" height="100" rx="10" fill="none" stroke="var(--gold)"
+                stroke-width="1.6" />
+              <text x="540" y="122" text-anchor="middle" class="lbl-strong" font-size="12.5">Weighted scoring</text>
+              <text x="540" y="140" text-anchor="middle" class="lbl-strong" font-size="12.5">model</text>
+              <text x="540" y="160" text-anchor="middle" font-size="10.5" opacity="0.7">30+20+25+15+10</text>
+              <text x="540" y="174" text-anchor="middle" font-size="10.5" opacity="0.7">composite, not an average</text>
+
+              <!-- arrow to output -->
+              <path d="M640,137 L 720,137" stroke="currentColor" stroke-width="1.6" opacity="0.7"
+                marker-end="url(#arrow)" />
+
+              <!-- output -->
+              <rect x="732" y="77" width="168" height="120" rx="10" fill="var(--teal)" opacity="0.12"
+                stroke="var(--teal)" stroke-width="1.6" />
+              <text x="816" y="126" text-anchor="middle" class="txt-teal" font-size="26"
+                font-family="IBM Plex Mono, monospace">0&ndash;100</text>
+              <text x="816" y="150" text-anchor="middle" class="lbl-strong" font-size="12">Unified</text>
+              <text x="816" y="166" text-anchor="middle" class="lbl-strong" font-size="12">Reputation Score</text>
+            </svg>
+            <figcaption>The real weighting behind every score: star rating counts most, but response rate, social
+              engagement, posting consistency and competitive position all pull their share &mdash; refreshed monthly,
+              for any local business category.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="sample">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">SAMPLE OUTPUT &middot; ILLUSTRATIVE DATA</div>
+          <h2>What a score actually breaks down into</h2>
+          <p>Fictional business, real scoring structure &mdash; the same five weighted signals from the diagram above,
+            applied to one sample account below median for its category.</p>
+        </div>
+        <div class="sample-grid">
+          <div class="vcard">
+            <div class="vhead"><span class="vtitle">Sample Business &middot; Perth, WA</span><span
+                class="vtag">sample</span></div>
+            <div class="industry-row" style="justify-content:flex-start; margin-bottom:16px;">
+              <span class="itag" style="font-size:10.5px; padding:4px 10px;">works for: caf&eacute;</span>
+              <span class="itag" style="font-size:10.5px; padding:4px 10px;">dentist</span>
+              <span class="itag" style="font-size:10.5px; padding:4px 10px;">salon</span>
+            </div>
+            <div class="gauge-wrap">
+              <svg width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="Score gauge showing 53 out of 100">
+                <circle cx="48" cy="48" r="40" fill="none" stroke="var(--surface-2)" stroke-width="9" />
+                <circle cx="48" cy="48" r="40" fill="none" stroke="var(--rust)" stroke-width="9" stroke-linecap="round"
+                  stroke-dasharray="251" stroke-dashoffset="118" transform="rotate(-90 48 48)" />
+              </svg>
+              <div>
+                <div class="score-num" style="font-size:40px;">53</div>
+                <div class="score-sub">OUT OF 100 &middot; -7 VS INDUSTRY MEDIAN</div>
+              </div>
+            </div>
+          </div>
+          <div class="vcard">
+            <div class="vhead"><span class="vtitle">How the 53 is built</span><span class="vtag">breakdown</span></div>
+            <div class="bar-row">
+              <div class="lbl">Star rating /30</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:80%;"></div>
+              </div>
+              <div class="val">24</div>
+            </div>
+            <div class="bar-row weak">
+              <div class="lbl">Response rate /20</div>
+              <div class="bar-track">
+                <div class="bar-fill weak" style="width:20%;"></div>
+              </div>
+              <div class="val">4</div>
+            </div>
+            <div class="bar-row">
+              <div class="lbl">Social engagement /25</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:56%;"></div>
+              </div>
+              <div class="val">14</div>
+            </div>
+            <div class="bar-row">
+              <div class="lbl">Posting consistency /15</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:60%;"></div>
+              </div>
+              <div class="val">9</div>
+            </div>
+            <div class="bar-row weak">
+              <div class="lbl">Competitive position /10</div>
+              <div class="bar-track">
+                <div class="bar-fill weak" style="width:20%;"></div>
+              </div>
+              <div class="val">2</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sample-download">
+          <div class="sd-head">
+            <span class="vtitle">Full Sample Reports</span>
+            <span class="vtag">pdf &middot; 19 pages</span>
+          </div>
+          <p>These aren't mockups &mdash; they're full 19-page sample audits, built on the real report template. Pick a
+            niche and download the actual PDF.</p>
+          <div class="sd-row">
+            <select id="dpiNicheSelect" class="sd-select" aria-label="Choose a business niche">
+              <option value="dental" data-file="/samples/dpi-sample-dental.pdf" selected>Dental practice</option>
+              <option value="cafe" data-file="/samples/dpi-sample-cafe.pdf">Caf&eacute;</option>
+              <option value="restaurant" disabled>Restaurant &mdash; coming soon</option>
+              <option value="tradie" disabled>Tradie / trade services &mdash; coming soon</option>
+            </select>
+            <a id="dpiSampleDownloadBtn" class="btn btn-primary" href="/samples/dpi-sample-dental.pdf" download>Download
+              sample PDF</a>
+          </div>
+          <div class="sd-note">// restaurant and tradie templates are in progress &mdash; dental and caf&eacute; are
+            the real thing</div>
+        </div>
+        <script>
+          (function () {
+            var sel = document.getElementById('dpiNicheSelect');
+            var btn = document.getElementById('dpiSampleDownloadBtn');
+            if (!sel || !btn) return;
+            sel.addEventListener('change', function () {
+              var opt = sel.options[sel.selectedIndex];
+              var file = opt.getAttribute('data-file');
+              if (file) {
+                btn.href = file;
+                btn.removeAttribute('aria-disabled');
+              } else {
+                btn.removeAttribute('href');
+                btn.setAttribute('aria-disabled', 'true');
+              }
+            });
+          })();
+        </script>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">BUILT TO GENERALISE</div>
+          <h2>One scoring engine, benchmarked to your actual category</h2>
+        </div>
+        <div class="trust-grid">
+          <div class="trust-item">
+            <h3>Works for any local business</h3>
+            <p>The same five-signal engine runs for a dental clinic, a caf&eacute;, or a hair salon &mdash; only the
+              competitor set and benchmarks change.</p>
+          </div>
+          <div class="trust-item">
+            <h3>Built on your real data</h3>
+            <p>Every recommendation ties back to evidence from your own reviews and listings &mdash; not generic,
+              one-size-fits-all advice.</p>
+          </div>
+          <div class="trust-item">
+            <h3>Fully automated</h3>
+            <p>No dashboards to configure and nothing to maintain &mdash; a finished report arrives on its own schedule,
+              every month.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="cta-band">
+          <div class="eyebrow" style="justify-content:center;">GET STARTED</div>
+          <h2 style="margin-top:12px;">Find out what your customers already know.</h2>
+          <p>Send us your Google Business Profile and we'll run the full audit &mdash; reviews, social, website,
+            competitors, and AI search visibility &mdash; and send your score back, whatever kind of business you run.
+          </p>
+          <div class="hero-ctas" style="justify-content:center;">
+            <a class="btn btn-primary" href="/#contact" style="font-size:15px; padding:14px 28px;">Request your free
+              audit</a>
+            <a class="btn btn-ghost" href="mailto:hello@andalibansari.com"
+              style="font-size:15px; padding:14px 28px;">hello@andalibansari.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-inner">
+        <a href="/" class="wordmark" style="text-decoration:none;"><span class="sq"></span>DPI</a>
+        <div class="foot-links">
+          <a href="/">← andalibansari.com</a>
+          <a href="#product">Product</a>
+          <a href="#inside">What's Inside</a>
+          <a href="#how">How It Works</a>
+          <a href="#sample">Sample Report</a>
+        </div>
+        <div class="mono" style="font-size:12px; color:var(--ink-faint);"><a
+            href="mailto:hello@andalibansari.com">hello@andalibansari.com</a></div>
+      </div>
+      <p class="foot-fine">Sample scores and business names shown above are illustrative, for demonstration only. &copy;
+        2026 Digital Presence Intelligence.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
