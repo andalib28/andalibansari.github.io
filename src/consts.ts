@@ -107,6 +107,14 @@ export const EXPERTISE = [
     tags: ["Redshift", "Snowflake", "Databricks", "BigQuery"],
   },
   {
+    icon: "analytics",
+    color: "teal",
+    title: "Data Analytics",
+    description:
+      "Turning warehouse and event data into dashboards, metrics layers, and ad-hoc analysis that actually drive decisions — not just reports nobody opens.",
+    tags: ["SQL", "Metrics Layer", "BI Dashboards", "Python"],
+  },
+  {
     icon: "coaching",
     color: "teal",
     title: "1:1 / Group Data & AI Engineering Coaching",
