@@ -57,6 +57,7 @@
       --teal: #2BB88A;
       --blue: #4E8BC9;
       --rust: #D6754F;
+      --violet: #9B8AD1;
       --gold-ink: #14120E;
       --grid-line: rgba(245, 240, 232, 0.045);
       --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 20px 50px -20px rgba(0, 0, 0, .6);
@@ -306,6 +307,21 @@
       font-family: 'IBM Plex Mono', monospace;
     }
 
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: var(--gold-ink);
+      background: var(--gold);
+      padding: 5px 12px;
+      border-radius: 99px;
+      margin-bottom: 14px;
+    }
+
     /* hero visual */
     .hero-visual {
       position: relative;
@@ -501,7 +517,133 @@
       }
     }
 
-    /* feature grid */
+    /* problem list */
+    .problem-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 14px;
+      max-width: 620px;
+    }
+
+    .problem-list li {
+      display: flex;
+      gap: 12px;
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      align-items: flex-start;
+    }
+
+    .problem-list li::before {
+      content: "×";
+      color: var(--rust);
+      font-weight: 700;
+      font-family: 'IBM Plex Mono', monospace;
+      flex: 0 0 auto;
+      width: 18px;
+      font-size: 16px;
+    }
+
+    /* promise box */
+    .promise-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 30px;
+      margin-bottom: 36px;
+    }
+
+    .promise-box h3 {
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .promise-box p {
+      font-size: 14.5px;
+      margin-bottom: 16px;
+      max-width: 62ch;
+    }
+
+    /* qa table */
+    .qa-head {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      padding: 0 18px 8px;
+    }
+
+    .qa-grid {
+      display: grid;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .qa-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--surface);
+    }
+
+    .qa-row>div {
+      padding: 15px 18px;
+      font-size: 13.5px;
+    }
+
+    .qa-row .q {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .qa-row .a {
+      color: var(--teal);
+    }
+
+    @media (max-width:700px) {
+      .qa-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* retention callout */
+    .retention-box {
+      border-left: 3px solid var(--gold);
+      background: var(--surface);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+    }
+
+    .retention-box .tag-line {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 8px;
+    }
+
+    .retention-box .q {
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .retention-box p {
+      font-size: 13.5px;
+    }
+
+    /* feature grid (also used for the six intelligence categories) */
     .feat-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -568,62 +710,77 @@
       letter-spacing: .06em;
     }
 
-    .feat-card.wide {
-      grid-column: span 1;
+    .feat-card .mini-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
     }
 
-    /* also-included grid */
-    .new-grid {
+    .feat-card .mini-tags span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--ink-faint);
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      border-radius: 99px;
+      padding: 3px 9px;
+    }
+
+    /* how-it-works steps */
+    .steps-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
 
     @media (max-width:900px) {
-      .new-grid {
+      .steps-grid {
         grid-template-columns: 1fr 1fr;
       }
     }
 
-    @media (max-width:620px) {
-      .new-grid {
+    @media (max-width:560px) {
+      .steps-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .new-card {
+    .step-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 11px;
-      padding: 18px 20px;
+      border-radius: 12px;
+      padding: 20px 18px;
       position: relative;
     }
 
-    .new-card h4 {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 14.5px;
-      font-weight: 700;
-      margin: 8px 0 8px;
-      padding-right: 36px;
-    }
-
-    .new-card p {
-      font-size: 12.6px;
-    }
-
-    .pill-area {
-      position: absolute;
-      top: 16px;
-      right: 18px;
+    .step-card .step-num {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 9.5px;
+      font-size: 11px;
+      color: var(--gold);
       font-weight: 700;
-      color: var(--ink-faint);
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      padding: 2px 7px;
-      border-radius: 99px;
-      letter-spacing: .04em;
+      margin-bottom: 12px;
+    }
+
+    .step-card h4 {
+      font-size: 14.5px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .step-card p {
+      font-size: 12.8px;
+    }
+
+    .step-arrow {
+      display: none;
+    }
+
+    @media (min-width:901px) {
+      .steps-grid {
+        position: relative;
+      }
     }
 
     /* diagram */
@@ -869,11 +1026,11 @@
           Presence Intelligence</span></a>
       <nav class="navlinks">
         <a href="#product">Product</a>
-        <a href="#inside">What's Inside</a>
+        <a href="#inside">Solution</a>
         <a href="#how">How It Works</a>
         <a href="#sample">Sample Report</a>
       </nav>
-      <div class="navcta"><a class="btn btn-primary" href="/#contact">Get your audit tailored</a></div>
+      <div class="navcta"><a class="btn btn-primary" href="/#contact">Get your free snapshot</a></div>
     </div>
   </header>
 
@@ -881,13 +1038,14 @@
     <section class="hero" id="product">
       <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow"><span class="dot"></span>AUTOMATED PIPELINE &middot; RUNS MONTHLY</div>
-          <h1>Know your <em>reputation score</em> before a customer goes looking.</h1>
-          <p class="lede">DPI scores any local business from 0&ndash;100 by combining reviews, social activity, your
-            website, and nearby competitors into one number &mdash; dentists, cafés, restaurants, salons, clinics, all
-            run through the same engine.</p>
+          <div class="badge-pill">FREE VISIBILITY SNAPSHOT</div>
+          <div class="eyebrow"><span class="dot"></span>AUTOMATED &middot; REFRESHED MONTHLY</div>
+          <h1>Is your business visible to <em>Google AI, ChatGPT, Claude and Gemini</em>?</h1>
+          <p class="lede">Most local businesses have no idea how they actually appear online until a customer tells
+            them. DPI shows you exactly how customers &mdash; and AI &mdash; see your business right now, and what to
+            fix first.</p>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="/#contact">Get your audit tailored</a>
+            <a class="btn btn-primary" href="/#contact">Get your free visibility snapshot</a>
             <a class="btn btn-ghost" href="#sample">See a sample report &darr;</a>
           </div>
           <div class="hero-note">// one score, built from everything that shapes how customers see you · works for any
@@ -956,6 +1114,23 @@
 
     <section>
       <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow" style="color:var(--rust);">THE PROBLEM</div>
+          <h2>Your customers are searching. Are they finding you &mdash; or your competitors?</h2>
+          <p>Right now, someone nearby is deciding where to go, and they're not calling you first &mdash; they're
+            checking Google, scrolling reviews, and increasingly, just asking an AI assistant.</p>
+        </div>
+        <ul class="problem-list">
+          <li>Competitors dominate local search and the Google map pack.</li>
+          <li>AI assistants like ChatGPT and Gemini recommend other businesses instead of yours.</li>
+          <li>Negative reviews sit unanswered, in public, for every future customer to read.</li>
+          <li>Your website and your Google Business Profile tell two different stories.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
         <div class="statbar">
           <div class="stat">
             <div class="v">0&ndash;100</div>
@@ -980,33 +1155,88 @@
     <section id="inside">
       <div class="wrap">
         <div class="sec-head">
-          <div class="eyebrow">WHAT'S INSIDE &middot; 19 PAGES &middot; 12 AREAS</div>
-          <h2>Twelve areas, one monthly report</h2>
-          <p>Every report breaks your digital presence into the parts that actually move new-customer enquiries &mdash;
-            not a wall of screenshots. Built the same way whether you run a clinic, a caf&eacute;, or a salon.</p>
+          <div class="eyebrow">THE SOLUTION</div>
+          <h2>One intelligence platform. Complete digital visibility.</h2>
+          <p>DPI continuously monitors your online presence, analyses your competitors, and identifies exactly what to
+            improve &mdash; across every place a customer forms an opinion of your business.</p>
         </div>
+
+        <div class="promise-box">
+          <h3>Be visible. Be trusted. Be recommended.</h3>
+          <p>Understand how customers discover your business across Google, social media, and AI search &mdash; then
+            see exactly what's holding your score back, and what to fix first.</p>
+          <div class="industry-row" style="justify-content:flex-start;">
+            <span class="itag" style="color:var(--teal); border-color:var(--teal);">Search Intelligence</span>
+            <span class="itag" style="color:var(--violet); border-color:var(--violet);">AI Visibility</span>
+            <span class="itag" style="color:var(--gold); border-color:var(--gold);">Reputation Intelligence</span>
+            <span class="itag" style="color:var(--blue); border-color:var(--blue);">Competitor Intelligence</span>
+          </div>
+        </div>
+
+        <div class="qa-head">
+          <span>Customer question</span>
+          <span>DPI's answer</span>
+        </div>
+        <div class="qa-grid">
+          <div class="qa-row">
+            <div class="q">Can customers find me?</div>
+            <div class="a">Search and discovery intelligence</div>
+          </div>
+          <div class="qa-row">
+            <div class="q">Do customers trust me?</div>
+            <div class="a">Reputation and sentiment intelligence</div>
+          </div>
+          <div class="qa-row">
+            <div class="q">Does AI recommend me?</div>
+            <div class="a">AI search visibility</div>
+          </div>
+          <div class="qa-row">
+            <div class="q">How do I compare with competitors?</div>
+            <div class="a">Competitor intelligence</div>
+          </div>
+        </div>
+
+        <div class="retention-box">
+          <div class="tag-line">THE FIFTH QUESTION — THE ONE THAT KEEPS YOU SUBSCRIBED</div>
+          <div class="q">Am I improving month after month?</div>
+          <p>That's why historical tracking, recurring reports, and measurable recommendations matter more than
+            continuously adding new audit sections. DPI is built to show you a trend, not just a snapshot.</p>
+        </div>
+
         <div class="feat-grid">
           <div class="feat-card" style="--fcolor:var(--teal)">
             <div class="fi"><svg viewBox="0 0 24 24">
-                <path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z" />
-                <path d="m20 20-4.3-4.3" />
-                <path d="M9 11.5 10.5 13 14 9.5" />
+                <path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11Z" />
+                <circle cx="12" cy="10" r="2.3" />
               </svg></div>
-            <span class="tag">AREA 01</span>
-            <h3>Reviews Health</h3>
-            <p>Star rating, response rate, and unanswered negatives &mdash; plus what customers actually praise or
-              criticise, pulled straight from your review text.</p>
+            <span class="tag">CATEGORY 01</span>
+            <h3>Search &amp; Discovery Intelligence</h3>
+            <p>How findable you are in local search and the Google map pack &mdash; and where your Google Business
+              Profile is costing you visibility.</p>
+            <div class="mini-tags"><span>Local search</span><span>Map pack</span><span>GBP completeness</span></div>
+          </div>
+          <div class="feat-card" style="--fcolor:var(--violet)">
+            <div class="fi"><svg viewBox="0 0 24 24">
+                <path d="M9 12a3 3 0 013-3h1a3 3 0 013 3v0a3 3 0 01-3 3h-1" />
+                <path d="M8 9H7a3 3 0 00-3 3v0a3 3 0 003 3h1" />
+                <circle cx="18" cy="18" r="2" />
+              </svg></div>
+            <span class="tag">CATEGORY 02</span>
+            <h3>AI Visibility Intelligence</h3>
+            <p>Whether ChatGPT, Gemini, Claude and Google AI know who you are, get your facts right, and actually
+              recommend you.</p>
+            <div class="mini-tags"><span>4 AI engines</span><span>Accuracy</span><span>Discoverability</span></div>
           </div>
           <div class="feat-card" style="--fcolor:var(--gold)">
             <div class="fi"><svg viewBox="0 0 24 24">
-                <path d="M4 5h11v7H8l-4 4V5Z" />
-                <path d="M20 10h-3" />
-                <circle cx="20" cy="14" r="0.4" />
+                <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+                <path d="M9 12l2 2 4-4" />
               </svg></div>
-            <span class="tag">AREA 05</span>
-            <h3>Social Media Scorecard</h3>
-            <p>Followers, growth, posting cadence, and engagement by content type &mdash; including your single best-
-              and worst-performing post.</p>
+            <span class="tag">CATEGORY 03</span>
+            <h3>Reputation Intelligence</h3>
+            <p>Your star rating, response rate, and what customers actually praise or criticise &mdash; plus the
+              sentiment behind each review.</p>
+            <div class="mini-tags"><span>Reviews</span><span>Sentiment</span><span>Staff signals</span></div>
           </div>
           <div class="feat-card" style="--fcolor:var(--blue)">
             <div class="fi"><svg viewBox="0 0 24 24">
@@ -1015,95 +1245,36 @@
                 <path d="M18 20v-7" />
                 <path d="M4 20h16" />
               </svg></div>
-            <span class="tag">AREA 07</span>
-            <h3>Competitor Benchmark</h3>
-            <p>Side-by-side comparison against the businesses actually competing with you nearby, plus a content gap map
-              of what they post that you don't.</p>
+            <span class="tag">CATEGORY 04</span>
+            <h3>Competitor Intelligence</h3>
+            <p>Side-by-side benchmarking against the businesses actually competing with you nearby, and the content
+              gaps they're exploiting.</p>
+            <div class="mini-tags"><span>Benchmark</span><span>Content gap</span><span>Positioning</span></div>
           </div>
           <div class="feat-card" style="--fcolor:var(--rust)">
+            <div class="fi"><svg viewBox="0 0 24 24">
+                <path d="M4 5h11v7H8l-4 4V5Z" />
+                <path d="M20 10h-3" />
+                <circle cx="20" cy="14" r="0.4" />
+              </svg></div>
+            <span class="tag">CATEGORY 05</span>
+            <h3>Social Intelligence</h3>
+            <p>Followers, growth, posting cadence, and engagement by content type &mdash; including what's working and
+              what isn't.</p>
+            <div class="mini-tags"><span>Posting cadence</span><span>Engagement</span><span>Best post</span></div>
+          </div>
+          <div class="feat-card" style="--fcolor:var(--teal)">
             <div class="fi"><svg viewBox="0 0 24 24">
                 <path d="M9 15 15 9" />
                 <path d="M10.5 6.5 12 5a3.5 3.5 0 0 1 5 5l-1.5 1.5" />
                 <path d="M13.5 17.5 12 19a3.5 3.5 0 0 1-5-5l1.5-1.5" />
               </svg></div>
-            <span class="tag">AREA 09</span>
-            <h3>Website &harr; Listing Cross-Analysis</h3>
+            <span class="tag">CATEGORY 06</span>
+            <h3>Website &amp; Profile Intelligence</h3>
             <p>Every mismatch between your website and your Google Business Profile &mdash; hours, services, booking
-              links, photos, contact details.</p>
-          </div>
-          <div class="feat-card" style="--fcolor:var(--gold)">
-            <div class="fi"><svg viewBox="0 0 24 24">
-                <path d="M12 3v3" />
-                <path d="M12 18v3" />
-                <path d="M3 12h3" />
-                <path d="M18 12h3" />
-                <circle cx="12" cy="12" r="5" />
-              </svg></div>
-            <span class="tag">AREA 10</span>
-            <h3>Unified Reputation Score</h3>
-            <p>One 0&ndash;100 number, built from five weighted signals so it can't be inflated by one strong metric
-              &mdash; see exactly how it's built below.</p>
-          </div>
-          <div class="feat-card" style="--fcolor:var(--teal)">
-            <div class="fi"><svg viewBox="0 0 24 24">
-                <path d="M5 6h14" />
-                <path d="m5 6 2 2 3-3" />
-                <path d="M5 13h14" />
-                <path d="m5 13 2 2 3-3" />
-                <path d="M11 20h8" />
-              </svg></div>
-            <span class="tag">AREA 11</span>
-            <h3>Priority Action Plan</h3>
-            <p>Ranked by revenue impact, not ease &mdash; plus ready-to-use response templates and a four-week content
-              calendar.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section style="padding-top:0;">
-      <div class="wrap">
-        <div class="sec-head">
-          <div class="eyebrow">ALSO IN EVERY REPORT</div>
-          <h2>The signals most audits don't touch</h2>
-          <p>Six more areas, folded into the same 19-page monthly report at no extra step for you.</p>
-        </div>
-        <div class="new-grid">
-          <div class="new-card">
-            <span class="pill-area">AREA 02</span>
-            <h4>Aspect-Based Sentiment</h4>
-            <p>8 dimensions of the customer experience &mdash; wait time, pricing transparency, cleanliness and more
-              &mdash; scored independently against the local median.</p>
-          </div>
-          <div class="new-card">
-            <span class="pill-area">AREA 03</span>
-            <h4>Review Velocity &amp; Momentum</h4>
-            <p>Is your reputation accelerating or declining? See the trend months before it shows up in your star
-              rating.</p>
-          </div>
-          <div class="new-card">
-            <span class="pill-area">AREA 04</span>
-            <h4>Staff Sentiment Signals</h4>
-            <p>Individual team members, as customers actually describe them in review text &mdash; your star performers
-              and your risk flags.</p>
-          </div>
-          <div class="new-card">
-            <span class="pill-area">AREA 06</span>
-            <h4>Social Content Gap Analysis</h4>
-            <p>The topics competitors post about that you don't &mdash; ranked by engagement opportunity, with post
-              ideas attached.</p>
-          </div>
-          <div class="new-card">
-            <span class="pill-area">AREA 08</span>
-            <h4>AI Search Visibility</h4>
-            <p>Does ChatGPT, Gemini, Claude or Google AI recommend you when someone asks for a business like yours
-              nearby &mdash; and get your hours and facts right while doing it?</p>
-          </div>
-          <div class="new-card">
-            <span class="pill-area">AREA 12</span>
-            <h4>Impact &amp; Effort Map</h4>
-            <p>Every finding plotted by how much it moves enquiries against how long it takes to fix &mdash; so you
-              start in the quick-wins corner.</p>
+              links, and contact details.</p>
+            <div class="mini-tags"><span>Cross-analysis</span><span>NAP consistency</span><span>Priority fixes</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1113,15 +1284,50 @@
       <div class="wrap">
         <div class="sec-head">
           <div class="eyebrow">HOW IT WORKS</div>
-          <h2>Five weighted signals in, one comparable score out</h2>
-          <p>Each signal is measured independently, then weighted into a single composite out of 100 &mdash; so a
-            business with a great star rating but a dead social account, or a broken booking link, doesn't get an
-            inflated score.</p>
+          <h2>From your details to a monthly intelligence report</h2>
+          <p>No dashboards to configure, nothing to install &mdash; just a report that arrives, and keeps arriving.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h4>Share your business details</h4>
+            <p>Your Google Business Profile, website, and the competitors you'd like to be measured against.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h4>DPI analyses your digital footprint</h4>
+            <p>Reviews, social activity, your website, AI search visibility, and nearby competitors &mdash; all run
+              through the same engine.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h4>Receive your intelligence report</h4>
+            <p>A 19-page report with your unified score, what's driving it, and a prioritised action plan.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <h4>Monitor improvements every month</h4>
+            <p>The same report, refreshed monthly, so you can see whether your score &mdash; and your visibility
+              &mdash; is actually moving.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="scoring" style="padding-top:0;">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">HOW THE SCORE IS CALCULATED</div>
+          <h2>Four weighted categories in, one comparable score out</h2>
+          <p>Each category is measured independently, then weighted into a single composite out of 100 &mdash; so a
+            business with a great star rating but weak AI visibility, or a broken booking link, doesn't get an
+            inflated score. AI &amp; search visibility now feeds the score directly, not just a descriptive callout.
+          </p>
         </div>
         <div class="diagram-card">
           <figure>
             <svg viewBox="0 0 920 290" role="img"
-              aria-label="Diagram: Google star rating weighted 30 points, review response rate 20 points, social engagement vs median 25 points, posting consistency 15 points, and competitive position 10 points, feed a weighted scoring model that outputs the Unified Reputation Score from 0 to 100."
+              aria-label="Diagram: Reviews and sentiment weighted 35 points, AI and search visibility 25 points, listing and website integrity 20 points, and social proof and activity 20 points, feed a weighted scoring model that outputs the Unified Reputation Score from 0 to 100."
               style="width:100%; height:auto;">
               <defs>
                 <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7"
@@ -1132,32 +1338,27 @@
               <!-- input boxes: label left, weight right -->
               <g font-size="12">
                 <rect x="20" y="8" width="220" height="42" rx="8" fill="none" stroke="currentColor" opacity="0.5" />
-                <text x="34" y="34" class="lbl-strong">Google star rating</text>
-                <text x="226" y="34" text-anchor="end" class="txt-gold">/30</text>
+                <text x="34" y="34" class="lbl-strong">Reviews &amp; Sentiment</text>
+                <text x="226" y="34" text-anchor="end" class="txt-gold">/35</text>
 
-                <rect x="20" y="62" width="220" height="42" rx="8" fill="none" stroke="currentColor" opacity="0.5" />
-                <text x="34" y="88" class="lbl-strong">Review response rate</text>
-                <text x="226" y="88" text-anchor="end" class="txt-gold">/20</text>
+                <rect x="20" y="80" width="220" height="42" rx="8" fill="none" stroke="currentColor" opacity="0.5" />
+                <text x="34" y="106" class="lbl-strong">AI &amp; Search Visibility</text>
+                <text x="226" y="106" text-anchor="end" class="txt-gold">/25</text>
 
-                <rect x="20" y="116" width="220" height="42" rx="8" fill="none" stroke="currentColor" opacity="0.5" />
-                <text x="34" y="142" class="lbl-strong">Social engagement</text>
-                <text x="226" y="142" text-anchor="end" class="txt-gold">/25</text>
-
-                <rect x="20" y="170" width="220" height="42" rx="8" fill="none" stroke="currentColor" opacity="0.5" />
-                <text x="34" y="196" class="lbl-strong">Posting consistency</text>
-                <text x="226" y="196" text-anchor="end" class="txt-gold">/15</text>
+                <rect x="20" y="152" width="220" height="42" rx="8" fill="none" stroke="currentColor" opacity="0.5" />
+                <text x="34" y="178" class="lbl-strong">Listing &amp; Website</text>
+                <text x="226" y="178" text-anchor="end" class="txt-gold">/20</text>
 
                 <rect x="20" y="224" width="220" height="42" rx="8" fill="none" stroke="currentColor" opacity="0.5" />
-                <text x="34" y="250" class="lbl-strong">Competitive position</text>
-                <text x="226" y="250" text-anchor="end" class="txt-gold">/10</text>
+                <text x="34" y="250" class="lbl-strong">Social Proof &amp; Activity</text>
+                <text x="226" y="250" text-anchor="end" class="txt-gold">/20</text>
               </g>
 
               <!-- arrows into model -->
               <g stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="none">
                 <path d="M240,29 C 330,29 340,137 440,137" marker-end="url(#arrow)" />
-                <path d="M240,83 C 320,83 340,135 440,137" marker-end="url(#arrow)" />
-                <path d="M240,137 C 340,137 340,137 440,137" marker-end="url(#arrow)" />
-                <path d="M240,191 C 320,191 340,139 440,137" marker-end="url(#arrow)" />
+                <path d="M240,101 C 320,101 340,135 440,137" marker-end="url(#arrow)" />
+                <path d="M240,173 C 320,173 340,139 440,137" marker-end="url(#arrow)" />
                 <path d="M240,245 C 330,245 340,139 440,137" marker-end="url(#arrow)" />
               </g>
 
@@ -1166,7 +1367,7 @@
                 stroke-width="1.6" />
               <text x="540" y="122" text-anchor="middle" class="lbl-strong" font-size="12.5">Weighted scoring</text>
               <text x="540" y="140" text-anchor="middle" class="lbl-strong" font-size="12.5">model</text>
-              <text x="540" y="160" text-anchor="middle" font-size="10.5" opacity="0.7">30+20+25+15+10</text>
+              <text x="540" y="160" text-anchor="middle" font-size="10.5" opacity="0.7">35+25+20+20</text>
               <text x="540" y="174" text-anchor="middle" font-size="10.5" opacity="0.7">composite, not an average</text>
 
               <!-- arrow to output -->
@@ -1181,9 +1382,9 @@
               <text x="816" y="150" text-anchor="middle" class="lbl-strong" font-size="12">Unified</text>
               <text x="816" y="166" text-anchor="middle" class="lbl-strong" font-size="12">Reputation Score</text>
             </svg>
-            <figcaption>The real weighting behind every score: star rating counts most, but response rate, social
-              engagement, posting consistency and competitive position all pull their share &mdash; refreshed monthly,
-              for any local business category.</figcaption>
+            <figcaption>The real weighting behind every score: reviews &amp; sentiment counts most, but AI &amp;
+              search visibility, listing &amp; website integrity, and social proof &amp; activity all pull their
+              share &mdash; refreshed monthly, for any local business category.</figcaption>
           </figure>
         </div>
       </div>
@@ -1194,8 +1395,8 @@
         <div class="sec-head">
           <div class="eyebrow">SAMPLE OUTPUT &middot; ILLUSTRATIVE DATA</div>
           <h2>What a score actually breaks down into</h2>
-          <p>Fictional business, real scoring structure &mdash; the same five weighted signals from the diagram above,
-            applied to one sample account below median for its category.</p>
+          <p>Fictional business, real scoring structure &mdash; the same four weighted categories from the diagram
+            above, applied to one sample account below median for its category.</p>
         </div>
         <div class="sample-grid">
           <div class="vcard">
@@ -1221,39 +1422,32 @@
           <div class="vcard">
             <div class="vhead"><span class="vtitle">How the 53 is built</span><span class="vtag">breakdown</span></div>
             <div class="bar-row">
-              <div class="lbl">Star rating /30</div>
+              <div class="lbl">Reviews &amp; Sentiment /35</div>
               <div class="bar-track">
-                <div class="bar-fill" style="width:80%;"></div>
+                <div class="bar-fill" style="width:54%;"></div>
               </div>
-              <div class="val">24</div>
+              <div class="val">19</div>
             </div>
             <div class="bar-row weak">
-              <div class="lbl">Response rate /20</div>
+              <div class="lbl">AI &amp; Search Vis. /25</div>
               <div class="bar-track">
-                <div class="bar-fill weak" style="width:20%;"></div>
-              </div>
-              <div class="val">4</div>
-            </div>
-            <div class="bar-row">
-              <div class="lbl">Social engagement /25</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width:56%;"></div>
-              </div>
-              <div class="val">14</div>
-            </div>
-            <div class="bar-row">
-              <div class="lbl">Posting consistency /15</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width:60%;"></div>
+                <div class="bar-fill weak" style="width:36%;"></div>
               </div>
               <div class="val">9</div>
             </div>
-            <div class="bar-row weak">
-              <div class="lbl">Competitive position /10</div>
+            <div class="bar-row">
+              <div class="lbl">Listing &amp; Website /20</div>
               <div class="bar-track">
-                <div class="bar-fill weak" style="width:20%;"></div>
+                <div class="bar-fill" style="width:60%;"></div>
               </div>
-              <div class="val">2</div>
+              <div class="val">12</div>
+            </div>
+            <div class="bar-row">
+              <div class="lbl">Social Proof /20</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:65%;"></div>
+              </div>
+              <div class="val">13</div>
             </div>
           </div>
         </div>
@@ -1263,8 +1457,8 @@
             <span class="vtitle">Full Sample Reports</span>
             <span class="vtag">pdf &middot; 19 pages</span>
           </div>
-          <p>These aren't mockups &mdash; they're full 19-page sample audits, built on the real report template. Pick a
-            niche and download the actual PDF.</p>
+          <p>These aren't mockups &mdash; they're full 19-page sample reports, built on the real report template. Pick
+            a niche and download the actual PDF.</p>
           <div class="sd-row">
             <select id="dpiNicheSelect" class="sd-select" aria-label="Choose a business niche">
               <option value="dental" data-file="/samples/dpi-sample-dental.pdf" selected>Dental practice</option>
@@ -1276,7 +1470,7 @@
               sample PDF</a>
           </div>
           <div class="sd-note">// restaurant and tradie templates are in progress &mdash; dental and caf&eacute; are
-            the real thing</div>
+            the real thing &middot; scores and business names are illustrative, not guarantees of results</div>
         </div>
         <script>
           (function () {
@@ -1308,7 +1502,7 @@
         <div class="trust-grid">
           <div class="trust-item">
             <h3>Works for any local business</h3>
-            <p>The same five-signal engine runs for a dental clinic, a caf&eacute;, or a hair salon &mdash; only the
+            <p>The same four-category engine runs for a dental clinic, a caf&eacute;, or a hair salon &mdash; only the
               competitor set and benchmarks change.</p>
           </div>
           <div class="trust-item">
@@ -1317,9 +1511,9 @@
               one-size-fits-all advice.</p>
           </div>
           <div class="trust-item">
-            <h3>Fully automated</h3>
-            <p>No dashboards to configure and nothing to maintain &mdash; a finished report arrives on its own schedule,
-              every month.</p>
+            <h3>An intelligence platform, not a guarantee</h3>
+            <p>DPI monitors and prioritises what's worth fixing &mdash; it doesn't promise a Google ranking, an AI
+              recommendation, or a revenue number.</p>
           </div>
         </div>
       </div>
@@ -1329,12 +1523,13 @@
       <div class="wrap">
         <div class="cta-band">
           <div class="eyebrow" style="justify-content:center;">GET STARTED</div>
-          <h2 style="margin-top:12px;">Find out what your customers already know.</h2>
-          <p>Send us your Google Business Profile and we'll run the full audit &mdash; reviews, social, website,
-            competitors, and AI search visibility &mdash; and send your score back, whatever kind of business you run.
-          </p>
+          <h2 style="margin-top:12px;">Discover what your competitors know that you don't.</h2>
+          <p>Send us your Google Business Profile and we'll run the full analysis &mdash; reviews, social, website,
+            competitors, and AI search visibility &mdash; and send your digital presence snapshot back, whatever kind
+            of business you run.</p>
           <div class="hero-ctas" style="justify-content:center;">
-            <a class="btn btn-primary" href="/#contact" style="font-size:15px; padding:14px 28px;">Get your audit tailored</a>
+            <a class="btn btn-primary" href="/#contact" style="font-size:15px; padding:14px 28px;">Get your digital
+              presence snapshot</a>
             <a class="btn btn-ghost" href="mailto:hello@andalibansari.com"
               style="font-size:15px; padding:14px 28px;">hello@andalibansari.com</a>
           </div>
@@ -1350,14 +1545,14 @@
         <div class="foot-links">
           <a href="/">← andalibansari.com</a>
           <a href="#product">Product</a>
-          <a href="#inside">What's Inside</a>
+          <a href="#inside">Solution</a>
           <a href="#how">How It Works</a>
           <a href="#sample">Sample Report</a>
         </div>
         <div class="mono" style="font-size:12px; color:var(--ink-faint);"><a
             href="mailto:hello@andalibansari.com">hello@andalibansari.com</a></div>
       </div>
-      <p class="foot-fine">Sample scores and business names shown above are illustrative, for demonstration only. 
+      <p class="foot-fine">Sample scores and business names shown above are illustrative, for demonstration only.
         © 2026 Andalib Ansari.</p>
     </div>
   </footer>
